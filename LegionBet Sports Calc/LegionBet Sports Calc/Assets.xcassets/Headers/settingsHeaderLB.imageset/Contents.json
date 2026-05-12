@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "settingsHeaderLB.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
