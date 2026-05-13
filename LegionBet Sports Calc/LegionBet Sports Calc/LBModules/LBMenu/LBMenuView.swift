@@ -21,14 +21,14 @@ struct LBMenuContainer: View {
 
 struct LBMenuView: View {
     @State var selectedTab = 0
-//    @StateObject var dashboardVM = FADashboardViewModel()
+    @StateObject var viewModel = LBCclcViewModel()
     private let tabs = ["Calc", "Tracker", "Stats",  "Tips", "Settings"]
     
     var body: some View {
         ZStack(alignment: .bottom) {
 
             TabView(selection: $selectedTab) {
-                LBCalcView()
+                LBCalcView(viewModel: viewModel)
                     .tag(0)
                 
                 Color.blue
@@ -37,7 +37,7 @@ struct LBMenuView: View {
                 Color.yellow
                     .tag(2)
                 
-                Color.green
+                LBTipsView()
                     .tag(3)
                 
                 LBSettingsView()

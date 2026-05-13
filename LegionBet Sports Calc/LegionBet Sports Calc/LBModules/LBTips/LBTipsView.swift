@@ -2,14 +2,35 @@
 //  LBTipsView.swift
 //  LegionBet Sports Calc
 //
-//  Created by Dias Atudinov on 13.05.2026.
 //
 
 import SwiftUI
 
 struct LBTipsView: View {
+    @StateObject private var viewModel = LBTipsViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            
+            Image(.tipsHeaderLB)
+                .resizable()
+                .scaledToFit()
+                .background(.black)
+            
+            ScrollView {
+                VStack(spacing: 16) {
+                    ForEach(viewModel.tips, id: \.id) { tip in
+                        LBTipCell(title: tip.title, content: tip.tips)
+                    }
+                }
+                .padding(20)
+                .padding(.bottom, 150)
+            }
+            
+        }
+        .ignoresSafeArea(edges: .top)
+        .background(.appBg)
+        
     }
 }
 
