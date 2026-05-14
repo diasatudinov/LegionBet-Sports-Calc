@@ -353,6 +353,7 @@ struct LBCalcView: View {
                                     
                                     events = []
                                     amount = ""
+                                    
                                 }
                                 
                                 
