@@ -31,16 +31,16 @@ struct LBMenuView: View {
                 LBCalcView(viewModel: viewModel)
                     .tag(0)
                 
-                Color.blue
+                LBTrackerView(viewModel: viewModel)
                     .tag(1)
                 
-                Color.yellow
+                LBStatisticsView(viewModel: viewModel)
                     .tag(2)
                 
                 LBTipsView()
                     .tag(3)
                 
-                LBSettingsView()
+                LBSettingsView(viewModel: viewModel)
                     .tag(4)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-enum BetType: String, CaseIterable {
+enum BetType: String, CaseIterable, Codable {
     case single, accumulator, system, flat
     
     var title: String {
@@ -428,7 +428,7 @@ struct LBCalcView: View {
         .environmentObject(CurrencySettingsStore())
 }
 
-struct Event {
+struct Event: Codable {
     let id = UUID()
     var name: String
     var odd: Decimal
@@ -444,7 +444,7 @@ extension String {
     }
 }
 
-struct Bet {
+struct Bet: Codable {
     let id = UUID()
     var type: BetType
     var stake: Decimal
@@ -454,6 +454,19 @@ struct Bet {
     var date: Date = .now
 }
 
-enum BetState {
+enum BetState: String, CaseIterable, Codable {
     case inProgress, win, lose, refund
+    
+    var title: String {
+        switch self {
+        case .inProgress:
+            "in Progress"
+        case .win:
+            "Win"
+        case .lose:
+            "Lose"
+        case .refund:
+            "Refund"
+        }
+    }
 }

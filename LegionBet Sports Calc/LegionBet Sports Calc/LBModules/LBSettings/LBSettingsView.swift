@@ -8,6 +8,8 @@ import SwiftUI
 
 struct LBSettingsView: View {
     @EnvironmentObject private var currencyStore: CurrencySettingsStore
+    @ObservedObject var viewModel: LBCclcViewModel
+    
     @State private var initial: String = "1000"
     
     var body: some View {
@@ -108,12 +110,11 @@ struct LBSettingsView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Button {
-                            
+                            viewModel.resetStatistics()
                         } label: {
                             HStack {
                                 Image(systemName: "trash")
                                     
-                                
                                 Text("Reset All Statistics")
                             }
                             .font(.system(size: 16, weight: .medium))
@@ -201,6 +202,6 @@ struct LBSettingsView: View {
 }
 
 #Preview {
-    LBSettingsView()
+    LBSettingsView(viewModel: LBCclcViewModel())
         .environmentObject(CurrencySettingsStore())
 }
